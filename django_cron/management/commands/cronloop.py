@@ -1,4 +1,4 @@
-from time import sleep
+import time
 
 from django.core.management import BaseCommand, call_command
 
@@ -46,6 +46,6 @@ class Command(BaseCommand):
     def _call_command_or_return_true(self, command, classes, s):
         try:
             call_command(command, *classes)
-            sleep(s)
+            time.sleep(s)
         except KeyboardInterrupt:
             return True
