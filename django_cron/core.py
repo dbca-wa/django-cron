@@ -1,12 +1,12 @@
 import logging
-from datetime import datetime, timedelta
-import traceback
-import time
 import sys
+import time
+import traceback
+from datetime import datetime, timedelta
 
 from django.conf import settings
-from django.utils.timezone import now as utc_now
 from django.db.models import Q
+from django.utils.timezone import now as utc_now
 
 from django_cron.helpers import get_class, get_current_time
 
@@ -109,11 +109,11 @@ class CronJobManager(object):
             return True
 
         if cron_job.schedule.run_monthly_on_days is not None:
-            if not datetime.today().day in cron_job.schedule.run_monthly_on_days:
+            if datetime.today().day not in cron_job.schedule.run_monthly_on_days:
                 return False
 
         if cron_job.schedule.run_weekly_on_days is not None:
-            if not datetime.today().weekday() in cron_job.schedule.run_weekly_on_days:
+            if datetime.today().weekday() not in cron_job.schedule.run_weekly_on_days:
                 return False
 
         if cron_job.schedule.retry_after_failure_mins:
