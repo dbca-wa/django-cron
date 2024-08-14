@@ -34,14 +34,14 @@ class Migration(migrations.Migration):
                 ),
             ],
         ),
-        # migrations.AlterIndexTogether(
-        #     name='cronjoblog',
-        #     index_together=set(
-        #         [
-        #             ('code', 'is_success', 'ran_at_time'),
-        #             ('code', 'start_time', 'ran_at_time'),
-        #             ('code', 'start_time'),
-        #         ]
-        #     ),
-        # ),
+        migrations.AlterIndexTogether(
+            name='cronjoblog',
+            index_together=set(
+                [
+                    ('code', 'is_success', 'ran_at_time'),
+                    ('code', 'start_time', 'ran_at_time'),
+                    ('code', 'start_time'),
+                ]
+            ),
+        ),
     ]
