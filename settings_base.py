@@ -49,8 +49,7 @@ LOGGING = {
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': 'django_cache',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
 }
 
@@ -73,3 +72,9 @@ TEMPLATES = [
 ROOT_URLCONF = 'test_urls'
 SITE_ID = 1
 STATIC_URL = '/static/'
+
+# Silence warning
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# Disabled for testing
+USE_TZ = False
